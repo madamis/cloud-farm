@@ -4,17 +4,20 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\ViewErrorBag;
 use Illuminate\View\Component;
 
-class DeleteModal extends Component
+class SingleInputError extends Component
 {
-    public string $model;
+    public ViewErrorBag $errors;
+    public string $name;
     /**
      * Create a new component instance.
      */
-    public function __construct($model)
+    public function __construct($errors, $name)
     {
-        $this->model = $model;
+        $this->errors = $errors;
+        $this->name = $name;
     }
 
     /**
@@ -22,6 +25,6 @@ class DeleteModal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-modal');
+        return view('components.single-input-error');
     }
 }

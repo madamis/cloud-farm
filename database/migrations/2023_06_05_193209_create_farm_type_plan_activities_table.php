@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('farm_type_plan_activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\FarmTypePlan::class);
-            $table->foreignIdFor(\App\Models\Activity::class);
+            $table->foreignIdFor(\App\Models\FarmTypePlan::class)->constrained();
+            $table->foreignIdFor(\App\Models\Activity::class)->constrained();
             $table->integer('duration');
-            $table->foreignIdFor(\App\Models\FarmTypePlanActivity::class)->nullable();
+            $table->foreignIdFor(\App\Models\FarmTypePlanActivity::class)->nullable()->constrained();
             $table->timestamps();
         });
     }

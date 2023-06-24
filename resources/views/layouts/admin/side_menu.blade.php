@@ -32,7 +32,7 @@
         </li><!-- End Blank Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/farm/">
+            <a class="nav-link collapsed" href="/admin/farms/">
                 <i class="bi bi-file-earmark"></i>
                 <span>Farms</span>
             </a>

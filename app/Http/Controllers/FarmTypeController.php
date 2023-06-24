@@ -8,13 +8,19 @@ use Illuminate\View\View;
 
 class FarmTypeController extends Controller
 {
+    protected array $rules = [
+        'name'=>'required',
+        'unit'=>'required',
+        'unit_size'=>'required|numeric',
+    ];
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
+        $farmType = new FarmType();
         $farm_types = FarmType::all();
-        return view('admin.farm_types.index', compact('farm_types'));
+        return view('admin.farm_types.index', compact('farm_types', 'farmType'));
     }
 
     /**
@@ -30,12 +36,7 @@ class FarmTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'unit'=>'required',
-            'unit_size'=>'required',
-            'description'=>'required',
-        ]);
+        $request->validate($this->rules);
         $farm_type = new FarmType();
         $farm_type->name = $request->name;
         $farm_type->unit = $request->unit;
@@ -44,11 +45,11 @@ class FarmTypeController extends Controller
 
         if($farm_type->save())
         {
-            return redirect()->back();
+            return redirect()->back()->with(['feedback'=>'successfully created','type'=>'success']);
         }
         else
         {
-            return redirect()->back();
+            return redirect()->back()->with(['feedback'=>'failed to create','type'=>'danger']);
         }
     }
 
@@ -60,12 +61,17 @@ class FarmTypeController extends Controller
         //
     }
 
+    public function take(FarmType $farmType)
+    {
+        return json_encode(['title'=>$farmType->name]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(FarmType $farmType)
     {
-        //
+        return view('admin.farm_types.edit', compact('farmType'));
     }
 
     /**
@@ -73,7 +79,20 @@ class FarmTypeController extends Controller
      */
     public function update(Request $request, FarmType $farmType)
     {
-        //
+        $request->validate($this->rules);
+        $farmType->name = $request->name;
+        $farmType->unit = $request->unit;
+        $farmType->unit_size = $request->unit_size;
+        $farmType->description = $request->description;
+
+        if($farmType->save())
+        {
+            return redirect()->to('/admin/farm_types')->with(['feedback'=>'successfully updated','type'=>'success']);
+        }
+        else
+        {
+            return redirect()->back()->with(['feedback'=>'failed to update','type'=>'success']);
+        }
     }
 
     /**
@@ -81,6 +100,11 @@ class FarmTypeController extends Controller
      */
     public function destroy(FarmType $farmType)
     {
-        //
+        $name = $farmType->name;
+        if($farmType->delete()) {
+            return redirect()->to('/admin/farm_types')->with(['feedback' => "successfully deleted $name", 'type' => 'success']);
+        }else{
+            return redirect()->to('/admin/farm_types')->with(['feedback' => "failed to delete $name ", 'type' => 'danger']);
+        }
     }
 }

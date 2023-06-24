@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignIdFor(\App\Models\FarmType::class);
+            $table->foreignIdFor(\App\Models\FarmType::class)->constrained();
             $table->float('unit_size_multiplier');
             $table->timestamps();
         });

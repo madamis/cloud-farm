@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/assets/fontawesome/css/all.css">
 
     <!-- Template Main CSS File -->
+    <link href="/assets/css/select2.min.css" rel="stylesheet">
     <link href="/assets/niceadmin/assets/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
@@ -64,6 +65,7 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
+
 <script src="/assets/niceadmin/assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="/assets/niceadmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/niceadmin/assets/vendor/chart.js/chart.umd.js"></script>
@@ -74,8 +76,11 @@
 <script src="/assets/niceadmin/assets/vendor/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
-<script src="/assets/niceadmin/assets/
-js/main.js"></script>
+<script src="/assets/js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="/assets/js/select2.min.js"></script>
+<script src="/assets/niceadmin/assets/js/main.js"></script>
+<script src="/assets/js/custome.js"></script>
+
 
 @stack('scripts')
 

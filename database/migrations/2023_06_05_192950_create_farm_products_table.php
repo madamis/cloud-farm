@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('farm_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\FarmType::class);
+            $table->foreignIdFor(\App\Models\FarmType::class)->constrained();
             $table->string('name');
             $table->float('unit_price');
             $table->text('description')->nullable();

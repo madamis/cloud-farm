@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('farm_managers', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Farm::class);
-            $table->foreignIdFor(\App\Models\User::class,'manager_id');
+            $table->foreignIdFor(\App\Models\Farm::class)->constrained();
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->enum('chief',['0','1']);
             $table->timestamps();
         });

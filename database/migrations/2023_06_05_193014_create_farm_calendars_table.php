@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('farm_calendars', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Farm::class);
+            $table->foreignIdFor(\App\Models\Farm::class)->constrained();
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

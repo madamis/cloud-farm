@@ -2,19 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\FarmType;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DeleteModal extends Component
+class FarmTypeForm extends Component
 {
-    public string $model;
+    public FarmType $farmType;
     /**
      * Create a new component instance.
      */
-    public function __construct($model)
+    public function __construct($farmType)
     {
-        $this->model = $model;
+        $this->farmType = $farmType;
     }
 
     /**
@@ -22,6 +23,6 @@ class DeleteModal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-modal');
+        return view('components.farm-type-form');
     }
 }

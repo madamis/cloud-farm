@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('farm_owners', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Farm::class);
-            $table->foreignIdFor(\App\Models\User::class, 'owner_id');
+            $table->foreignIdFor(\App\Models\Farm::class)->constrained();
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->float('percentage',3,2);
             $table->timestamps();
         });

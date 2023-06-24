@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('farm_activities', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Farm::class);
-            $table->foreignIdFor(\App\Models\Activity::class);
+            $table->foreignIdFor(\App\Models\Farm::class)->constrained();
+            $table->foreignIdFor(\App\Models\Activity::class)->constrained();
             $table->float('cost',8,2)->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

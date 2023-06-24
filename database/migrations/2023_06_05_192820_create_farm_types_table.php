@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('farm_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('unit');
             $table->float('unit_size');
             $table->timestamps();

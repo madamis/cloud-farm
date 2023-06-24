@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DeleteModal extends Component
+class FeedbackMessage extends Component
 {
-    public string $model;
     /**
      * Create a new component instance.
      */
-    public function __construct($model)
+    public function __construct()
     {
-        $this->model = $model;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class DeleteModal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-modal');
+        return view('components.feedback-message');
     }
 }

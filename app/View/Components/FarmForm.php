@@ -4,17 +4,20 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
-class DeleteModal extends Component
+class FarmForm extends Component
 {
-    public string $model;
+    public Collection $farmTypes;
+    public Collection $farms;
     /**
      * Create a new component instance.
      */
-    public function __construct($model)
+    public function __construct($farms, $farmTypes)
     {
-        $this->model = $model;
+        $this->farmTypes = $farmTypes;
+        $this->farms = $farms;
     }
 
     /**
@@ -22,6 +25,6 @@ class DeleteModal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-modal');
+        return view('components.farm-form');
     }
 }
