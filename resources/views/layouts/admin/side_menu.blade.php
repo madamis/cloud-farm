@@ -18,13 +18,6 @@
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/">
-                <i class="bi bi-file-earmark"></i>
-                <span>My Farms</span>
-            </a>
-        </li><!-- End Blank Page Nav -->
-
-        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/farm_types/">
                 <i class="bi bi-file-earmark"></i>
                 <span>Farm Types</span>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Farm;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,14 +11,14 @@ use Illuminate\View\Component;
 class FarmForm extends Component
 {
     public Collection $farmTypes;
-    public Collection $farms;
+    public Farm $farm;
     /**
      * Create a new component instance.
      */
-    public function __construct($farms, $farmTypes)
+    public function __construct($farm, $farmTypes)
     {
         $this->farmTypes = $farmTypes;
-        $this->farms = $farms;
+        $this->farm = $farm;
     }
 
     /**

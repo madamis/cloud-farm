@@ -10,7 +10,7 @@
                 <!-- General Form Elements -->
                 <form method="post" action="/admin/farms/">
                     @csrf
-                    <x-farm-form :farm-types="$farmTypes" :farms="$farms"></x-farm-form>
+                    <x-farm-form :farm="$farm" :farm-types="$farmTypes"></x-farm-form>
                 </form>
                 <!-- End General Form Elements -->
             </div>

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group mb-3">
-                <label for="inputText" class="col-form-label">Farm Name</label>
+                <label for="inputText" class="col-form-label">Farm Bussiness Name</label>
                 <input type="text" class="form-control" name="name" value="{{$farm->name ?? old('name')}}">
                 <x-single-input-error :$errors :name="'name'"></x-single-input-error>
             </div>
@@ -12,9 +12,9 @@
             <div class="form-group mb-3">
                 <label for="inputText" class="col-form-label">Farm Type</label>
                 <select class="form-select select2" aria-label="Default select example" name="farm_type_id">
-                    <option selected="">Open this select menu</option>
+                    <option>Open this select menu</option>
                     @foreach($farmTypes as $farmType)
-                        <option value="{{$farmType->id}}">{{$farmType->name}}</option>
+                        <option value="{{$farmType->id}}" {{ (($farm->farm_type != null) and ($farm->farm_type->id == $farmType->id)) ? 'selected' : ''}}>{{$farmType->name}}</option>
                     @endforeach
                 </select>
                 <x-single-input-error :$errors :name="'farm_type_id'"></x-single-input-error>

@@ -51,6 +51,12 @@ Route::middleware('auth')->group(function () {
         });
         Route::prefix('activities')->group(function (){
             Route::get('/', [ActivityController::class, 'index'])->name('admin.activity.index');
+            Route::get('/take/{activity}', [ActivityController::class, 'take'])->name('admin.activity.take');
+            Route::get('/{activity}', [ActivityController::class, 'show'])->name('admin.activity.show');
+            Route::get('/edit/{activity}', [ActivityController::class, 'edit'])->name('admin.activity.edit');
+            Route::put('/{activity}', [ActivityController::class, 'update'])->name('admin.activity.update');
+            Route::delete('/{activity}', [ActivityController::class, 'destroy'])->name('admin.activity.delete');
+            Route::post('/', [ActivityController::class, 'store'])->name('admin.activity.store');
         });
     });
 });
