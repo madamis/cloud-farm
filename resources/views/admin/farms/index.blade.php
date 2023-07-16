@@ -28,7 +28,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Farm Typr</th>
                         <th scope="col">Unit Size Multiplier</th>
-                        <th scope="col">Updated</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -39,7 +39,7 @@
                             <td>{{$farm['name']}}</td>
                             <td>{{$farm->farm_type->name}}</td>
                             <td>{{$farm['unit_size_multiplier']}}</td>
-                            <td>{{$farm['updated_at']}}</td>
+                            <td>{{ substr($farm->description, 0,30).'...' }}</td>
                             <td>
                                 <a href="/admin/farms/edit/{{$farm->id}}" class="btn btn-sm btn-outline-primary"> <i class="fas fa-edit"></i> </a>
                                 <button id="{{$farm->id}}" class="btn btn-sm btn-outline-danger delete-farm"> <i class="fas fa-trash"></i> </button>

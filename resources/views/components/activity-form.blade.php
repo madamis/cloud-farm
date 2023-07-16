@@ -27,7 +27,7 @@
             <div class="form-group mb-3">
                 <label for="inputText" class="col-form-label">Parent Activity</label>
                 <select class="form-select select2" aria-label="Default select example" name="parent_activity">
-                    <option disabled selected>Parent activity</option>
+                    <option value="" selected>Parent activity</option>
                     @foreach($parentActivities as $parentActivity)
                         <option value="{{$parentActivity->id}}" {{ (($activity->parent_activity != null) and
                             ($parentActivity->id == $activity->parent_activity)) ? 'selected':'' }}>{{$parentActivity->name}}</option>
@@ -40,7 +40,7 @@
             <div class="form-group mb-3">
                 <label for="inputText" class="col-form-label">Previous Activity</label>
                 <select class="form-select select2" aria-label="Default select example" name="previous_activity">
-                    <option disabled selected>Previous activity</option>
+                    <option value="" selected>Previous activity</option>
                     @foreach($previousActivities as $previousActivity)
                         <option value="{{$previousActivity->id}}" {{ (($activity->previous_activity != null) and
                         ($previousActivity->id == $activity->previous_activity)) ? 'selected':'' }}>{{$previousActivity->name}}</option>

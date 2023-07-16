@@ -27,7 +27,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/farms/">
                 <i class="bi bi-file-earmark"></i>
-                <span>Farms</span>
+                <span>Farm Business</span>
             </a>
         </li><!-- End Blank Page Nav -->
 

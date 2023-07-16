@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
+use App\Models\FarmTypeActivity;
 use App\Models\FarmType;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -72,6 +74,60 @@ class FarmTypeController extends Controller
     public function edit(FarmType $farmType)
     {
         return view('admin.farm_types.edit', compact('farmType'));
+    }
+
+    /**
+     * Show the page for editing activities of the specified resource.
+     */
+    public function activities(FarmType $farmType)
+    {
+        $allocatedActivitiesIDs = $farmType->farmTypeActivities()->pluck('activity_id');
+        $possibleActivities = Activity::whereNotIn('id',$allocatedActivitiesIDs)->get();
+//        dd($farmType->activities());
+        return view('admin.farm_types.activities', compact('farmType','possibleActivities'));
+    }
+
+    public function postFarmActivity(Request $request, FarmType $farmType)
+    {
+        $request->validate([
+            'activity'=>'required'
+        ]);
+        $lastPosition = FarmTypeActivity::where('farm_type_id', $farmType->id)->max('position');
+        $position = $lastPosition++ ? $lastPosition : 1;
+
+        $farmActivity = new FarmTypeActivity();
+        $farmActivity->farm_type_id = $farmType->id;
+        $farmActivity->activity_id = $request->activity;
+        $farmActivity->position = $position;
+        $farmActivity->cost = $request->cost;
+        $farmActivity->description = $request->description;
+
+        if($farmActivity->save())
+        {
+            return redirect()->back()->with(['feedback'=>'successfully added activity','type'=>'success']);
+        }
+        return redirect()->back()->with(['feedback'=>'failed to add activity','type'=>'warning']);
+
+
+
+    }
+
+    public function takeFarmTypeActivity(FarmTypeActivity $farmTypeActivity)
+    {
+        $farmTypeName = $farmTypeActivity->farmType->name;
+        $activityName = $farmTypeActivity->activity->name;
+        return json_encode(['title'=>"$activityName for $farmTypeName"]);
+    }
+
+    public function deleteFarmTypeActivity(FarmTypeActivity $farmTypeActivity)
+    {
+        $name = $farmTypeActivity->activity->name ." for ". $farmTypeActivity->farmType->name;
+        $id = $farmTypeActivity->farmType->id;
+        if($farmTypeActivity->delete()) {
+            return redirect()->to("/admin/farm_types/activities/$id")->with(['feedback' => "successfully deleted $name", 'type' => 'success']);
+        }else{
+            return redirect()->to("/admin/farm_types/activities/$id")->with(['feedback' => "failed to delete $name ", 'type' => 'danger']);
+        }
     }
 
     /**

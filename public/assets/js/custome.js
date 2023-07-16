@@ -15,6 +15,7 @@ function deleteModel(model, link)
             type: "get",
 
             success: function(response){
+                console.log(response)
                 try {
                     response = JSON.parse(response)
                 }catch (e){
