@@ -58,7 +58,7 @@ class FarmController extends Controller
      */
     public function show(Farm $farm)
     {
-        //
+        return view('admin.farms.show', compact('farm'));
     }
 
     public function take(Farm $farm)

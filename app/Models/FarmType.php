@@ -25,4 +25,15 @@ class FarmType extends Model
     {
         return $this->hasManyThrough(Activity::class, FarmTypeActivity::class,'farm_type_id','id','id','activity_id');
     }
+
+    public function projectedInputCosts()
+    {
+        $projectedCosts = 0;
+        foreach ($this->farmTypeActivities as $farmTypeActivity)
+        {
+            $projectedCosts += $farmTypeActivity->activity->cost;
+        }
+
+        return $projectedCosts;
+    }
 }

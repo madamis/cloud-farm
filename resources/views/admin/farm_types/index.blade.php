@@ -28,6 +28,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Unit Size</th>
                         <th scope="col">Unit</th>
+                        <th scope="col">Activities</th>
                         <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -39,6 +40,7 @@
                             <td>{{$farm_type['name']}}</td>
                             <td>{{$farm_type['unit_size']}}</td>
                             <td>{{$farm_type['unit']}}</td>
+                            <td>{{$farm_type->activities()->count()}}</td>
                             <td>{{ substr($farm_type->description, 0,30).'...' }}</td>
                             <td>
                                 <a href="/admin/farm_types/activities/{{$farm_type->id}}" class="btn btn-sm btn-outline-primary"> <i class="fas fa-cog"></i> </a>

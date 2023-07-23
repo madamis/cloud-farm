@@ -18,7 +18,7 @@
         <x-feedback-message></x-feedback-message>
         @if($farms->count() > 0)
             <div class="card-body">
-                <h5 class="card-title">Farm Types</h5>
+                <h5 class="card-title">My Farm Businesses </h5>
 
                 <!-- Default Table -->
                 <table class="table">
@@ -26,10 +26,10 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Farm Typr</th>
-                        <th scope="col">Unit Size Multiplier</th>
+                        <th scope="col">Farm Type</th>
+                        <th scope="col">Farm Size</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-end">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,9 +38,10 @@
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$farm['name']}}</td>
                             <td>{{$farm->farm_type->name}}</td>
-                            <td>{{$farm['unit_size_multiplier']}}</td>
+                            <td>{{$farm->size()}}</td>
                             <td>{{ substr($farm->description, 0,30).'...' }}</td>
-                            <td>
+                            <td class="text-end">
+                                <a href="/admin/farms/{{$farm->id}}" class="btn btn-sm btn-outline-primary"> <i class="fas fa-eye"></i> </a>
                                 <a href="/admin/farms/edit/{{$farm->id}}" class="btn btn-sm btn-outline-primary"> <i class="fas fa-edit"></i> </a>
                                 <button id="{{$farm->id}}" class="btn btn-sm btn-outline-danger delete-farm"> <i class="fas fa-trash"></i> </button>
                             </td>
