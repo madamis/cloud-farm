@@ -1,7 +1,7 @@
 <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">{{$title}} <span>| {{$subTitle}}</span></h5>
+        <h5 class="card-title">{{$title}} <span>{{ empty($subTitle) ? '' : '|' }} {{$subTitle}}</span></h5>
 
         <div class="d-flex align-items-center">
             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

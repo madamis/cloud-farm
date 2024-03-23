@@ -53,7 +53,7 @@
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{ $activityFarm->activity->name }}</td>
                             <td>{{ $activityFarm->farmActivityCost($farm->unit_size_multiplier) }}</td>
-                            <td>{{ $activityFarm->activity->duration  }}</td>
+                            <td>{{ $activityFarm->farmActivityDuration($farm->unit_size_multiplier)  }}</td>
                             <td>{{ $activityFarm->activity->description }}</td>
                             <td class="text-end">{{ $activityFarm->calculateStartDate($farm->startDate()) }}</td>
                             <td class="text-end">{{ $activityFarm->calculateEndDate($farm->startDate()) }}</td>

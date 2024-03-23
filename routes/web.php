@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/sendMail', [\App\Http\Controllers\EmailController::class, 'sendEmail']);
+
 Route::get('/dashboard', [FarmingController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

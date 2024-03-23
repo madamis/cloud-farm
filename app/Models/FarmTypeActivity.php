@@ -50,6 +50,11 @@ class FarmTypeActivity extends Model
         return $this->activity->cost * $multiplier;
     }
 
+    public function farmActivityDuration($multiplier)
+    {
+        return $this->activity->duration * $multiplier;
+    }
+
     // Generate the function to calculate the start date of an activity
     public function calculateStartDate($firstActivityStartDate)
     {
