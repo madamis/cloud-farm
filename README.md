@@ -1,7 +1,7 @@
-### Problem
+# Problem
 Combining farming and 7-5 job has been a daunting task usually one suffers and most of the time is farming that starves due to pressure from bosses and convenience as well. The unpredictability of the outcome also minimizes the chances of making it in agriculture. That's why you can be saying you have been farming for many years with nothing to show and thinking of giving up.
 
-# Managing to farm has been a difficult task.
+### Managing to farm has been a difficult task.
 ... ** Finding reliable farm managers. 
 Lack of forecast on the investments and outputs
 Pest and disease management
